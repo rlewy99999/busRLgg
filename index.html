@@ -42,19 +42,19 @@ body {
 
 h1 {
     font-size: 30px;
-    margin: 5px 0 35px;
+    margin: 5px 0 20px;
 }
 
 .date {
     color: #888;
     font-size: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
 .count {
     font-size: 46px;
     font-weight: bold;
-    margin: 20px 0 25px;
+    margin: 12px 0 15px;
 }
 
 .status {
@@ -62,7 +62,7 @@ h1 {
     border-radius: 30px;
     padding: 12px 17px;
     font-size: 17px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     border: none;
     width: 60%;
     margin-left: auto;
@@ -181,7 +181,54 @@ button {
     border-radius: 50%;
     object-fit: cover;
 }
+.ticker {
+    width: 100%;
+    overflow: hidden;
+    background: #E4F1F6;
+    color: #326477;
+    white-space: nowrap;
+    padding: 9px 0;
+    margin: 15px 0 20px;
+    font-size: 15px;
+    font-weight: 600;
+}
 
+..ticker {
+    width: 100%;
+    overflow: hidden;
+    background: #E4F1F6;
+    color: #326477;
+    white-space: nowrap;
+    padding: 9px 0;
+    margin: 15px 0 20px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.ticker-text {
+    display: flex;
+    width: max-content;
+    animation: tickerMove 18s linear infinite;
+}
+
+.ticker-text span {
+    flex-shrink: 0;
+    padding-right: 30px;
+}
+
+@keyframes tickerMove {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes tickerMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
 @media print {
     body { background: white; }
     .form { display: none; }
@@ -195,9 +242,16 @@ button {
 
 <div class="top-title">
     <img src="newlogo.png" class="brand-logo" alt="бренд">
-    <h1 id="topTransport">Автобус</h1>
+
+    <div class="ticker">
+    <div class="ticker-text">
+        <span>◆ Я живий! ◆ Життя — цікаве, і мотивація то є сильна ! філософія◆ найголовніше ◆</span>
+        <span>◆ Я живий! ◆ Життя — цікаве, і мотивація то є сильна ! філософія◆ найголовніше ◆</span>
+    </div>
 </div>
 
+    <h1 id="topTransport">Автобус</h1>
+</div>
 <div class="date" id="date"></div>
 
 <div class="count" id="count">1 квиток</div>
