@@ -58,12 +58,15 @@ h1 {
 }
 
 .status {
-    background: #ADDFF5;
+    background: linear-gradient(90deg, #D6ECDF 0%, #D5E9F9 100%);
     border-radius: 30px;
-    padding: 17px;
+    padding: 12px 17px;
     font-size: 17px;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
     border: none;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -155,6 +158,23 @@ button {
     gap: 5px;
 }
 
+.status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #35C759;
+    border-radius: 50%;
+    background: transparent;
+    margin-right: 6px;
+    vertical-align: middle;
+}
 .brand-logo {
     width: 55px;
     height: 55px;
@@ -174,7 +194,7 @@ button {
 <div class="ticket">
 
 <div class="top-title">
-    <img src="logo.png" class="brand-logo" alt="Мій бренд">
+    <img src="newlogo.png" class="brand-logo" alt="бренд">
     <h1 id="topTransport">Автобус</h1>
 </div>
 
@@ -183,7 +203,10 @@ button {
 <div class="count" id="count">1 квиток</div>
 
 <div class="status">
-    <span>Квиток дійсний</span>
+    <span class="status-label">
+        <span class="status-dot"></span>
+        Квиток дійсний
+    </span>
     <span id="timer">60:00</span>
 </div>
 
@@ -230,6 +253,7 @@ button {
 </button>
 </div>
 
+<
 <script>
 function drawQR() {
     const qr = document.getElementById("qr");
@@ -246,12 +270,21 @@ function drawQR() {
     }
 }
 
+function updateDate() {
+    const now = new Date();
+
+    document.getElementById("date").textContent =
+        "Придбано " +
+        now.getDate() + " " +
+        now.toLocaleString("uk-UA", { month: "long" }) +
+        " о " +
+        String(now.getHours()).padStart(2, "0") + ":" +
+        String(now.getMinutes()).padStart(2, "0");
+}
+
 function updateTicket() {
     const bus = document.getElementById("busInput").value.trim();
     const transport = document.getElementById("transportInput").value;
-    document.getElementById("topTransport").textContent = transport;
-
-document.getElementById("transportResult").textContent = transport;
     const count = Number(document.getElementById("countInput").value);
     const number = document.getElementById("numberInput").value.trim();
 
@@ -261,31 +294,23 @@ document.getElementById("transportResult").textContent = transport;
         return;
     }
 
+    document.getElementById("topTransport").textContent = transport;
+    document.getElementById("transportResult").textContent = transport;
     document.getElementById("bus").textContent = bus;
+
     document.getElementById("count").textContent =
         count + (count === 1 ? " квиток" : " квитків");
+
     document.getElementById("number").textContent = number;
 
-    document.getElementById("date").textContent =
-        "придбано" + new Date().toLocaleString("uk-UA", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit"
-});
+    updateDate();
 }
 
-document.getElementById("date").textContent =
-    "придбано " + new Date().toLocaleString("uk-UA", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit"
-});
+// Дата при відкритті сторінки
+updateDate();
 
-    let seconds = 60 * 60;
+// Таймер
+let seconds = 60 * 60;
 
 setInterval(function() {
     if (seconds > 0) {
@@ -300,6 +325,7 @@ setInterval(function() {
         String(remainingSeconds).padStart(2, "0");
 
 }, 1000);
+
 drawQR();
 </script>
 
