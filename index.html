@@ -24,6 +24,7 @@
     box-sizing: border-box;
 }
 
+
 body {
     margin: 0;
     background: #f3f3f3;
@@ -32,13 +33,16 @@ body {
 }
 
 .ticket {
-    background: white;
-    max-width: 430px;
-    min-height: 100vh;
-    margin: auto;
-    padding: 6px 0px;
-    text-align: center;
-}
+background: white;
+max-width: 430px;
+min-height: 100vh;
+margin: 20px auto;
+padding: 15px 0;
+text-align: center;
+
+border-radius: 20px;
+box-shadow: 0 2px 15px rgba(0, 0, 0, 0.10);
+border: 1px solid #eeeeee;}
 
 h1 {
     font-size: 33px;
@@ -142,6 +146,11 @@ select {
     background: white;
 }
 
+.number-sign {
+    font-size: 26px;
+    font-weight: 900;
+}
+
 button {
     width: 100%;
     padding: 15px;
@@ -184,13 +193,20 @@ button {
 
 .line {
     width: 100%;
-    height: 2px;
-    margin: 25px auto 30px;
-    border-top: 2px dashed #d8d8d8;
-    opacity: 0.8;
-    transform: scaleY(1.6);
+    height: 12px;
+    margin: 25px auto;
+    background: repeating-linear-gradient(
+        to right,
+        #dedede 0px,
+        #dedede 15px,
+        transparent 15px,
+        transparent 31px
+    );
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
 }
-
 .ticker {
     width: 100%;
     overflow: hidden;
@@ -275,11 +291,12 @@ button {
 </div>
 
 <span id="transportResult">Автобус</span>
-№ <span id="bus" class="bus-number">0107</span>
+<strong style="font-size: 26px; font-weight: 900;">№</strong> <span id="bus" class="bus-number">0107</span>
 
 <div class="line"></div>
 
 <img src="my-qr.png" width="210">
+
 
 <div class="number">
     Номер: <span id="number">193 213</span>
