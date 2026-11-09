@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>скамер сайт рл9</title>
+    <title>сайт рл9</title>
 </head>
 <body>
 
@@ -379,8 +379,21 @@ function updateTicket() {
     document.getElementById("transportResult").textContent = transport;
     document.getElementById("bus").textContent = bus;
 
-    document.getElementById("count").textContent =
-        count + (count === 1 ? " квиток" : " квитків");
+    let word;
+
+if (count % 10 === 1 && count % 100 !== 11) {
+    word = "квиток";
+} else if (
+    count % 10 >= 2 &&
+    count % 10 <= 4 &&
+    (count % 100 < 12 || count % 100 > 14)
+) {
+    word = "квитки";
+} else {
+    word = "квитків";
+}
+
+document.getElementById("count").textContent = count + " " + word;
 
     document.getElementById("number").textContent = number;
 
